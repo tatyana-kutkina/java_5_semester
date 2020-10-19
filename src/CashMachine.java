@@ -137,10 +137,6 @@ public class CashMachine {
             System.out.println('\n'+ "Количество комбинаций:" + machine.combinations.size());
         }
 
-
-        long[] noms = {2, 1};
-        CashMachine mach = new CashMachine(5, 2, noms, "expected");
-        System.out.println(mach.equals(machine));
     }
 
 }
