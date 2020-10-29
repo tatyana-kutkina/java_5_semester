@@ -6,20 +6,18 @@ import java.util.*;
 
 public class CashMachine {
 
-    Long sum;   //сумма размена
-    int n;  //количество купюр
-    Long[] nominals;    //номиналы купюр
-    ArrayList<ArrayList<Long>> combinations;     // список всевозможных комбинаций
+    Long sum;
+    int n;
+    Long[] nominals;
+    ArrayList<ArrayList<Long>> combinations;
 
-    //конструктор банкомата
     public CashMachine(Long sum, int n, Long[] nominals) {
         this.sum = sum;
         this.n = n;
         this.nominals = nominals;
     }
 
-    //коструктор машины
-    //из стандартного потока ввода
+
     public CashMachine(InputStream inputStream) throws InputMismatchException {
 
         Scanner sc = new Scanner(inputStream);
@@ -36,8 +34,7 @@ public class CashMachine {
 
     }
 
-    //конструктор машины
-    //комбинации из файла
+
     public CashMachine(Long sum, int n, Long[] nominals, String fileName) {
         this.sum = sum;
         this.n = n;
@@ -49,7 +46,9 @@ public class CashMachine {
             while ((line = br.readLine()) != null) {
                 ArrayList<Long> list = new ArrayList<>();
                 String[] st = line.split(" ");
-                for (String s : st) list.add(Long.parseLong(s));
+                for (String s : st) {
+                    list.add(Long.parseLong(s));
+                }
                 combinations.add(list);
             }
         } catch (IOException e) {
@@ -57,7 +56,6 @@ public class CashMachine {
         }
     }
 
-    //вычисляем все возможные комбинации
     public void getCombinations() throws RuntimeException {
 
         if (sum < 0) {
@@ -74,16 +72,18 @@ public class CashMachine {
 
         combinations = new ArrayList<>();
         getCombinations(new int[n], sum, 0);
-        if (combinations.size() == 0)
+        if (combinations.size() == 0) {
             throw new RuntimeException("Невозможно разменять данную сумму представленными купюрами");
+        }
     }
 
     public void getCombinations(int[] counts, long amount, int index) {
         if (amount == 0) {
             ArrayList<Long> list = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < counts[i]; j++)
+                for (int j = 0; j < counts[i]; j++){
                     list.add(nominals[i]);
+                }
             }
             combinations.add(list);
 
@@ -96,31 +96,37 @@ public class CashMachine {
         counts[index]++;
         getCombinations(counts, amount - nominals[index], index);
         counts[index]--;
-        if (index + 1 < n && nominals[index + 1] <= amount)
+        if (index + 1 < n && nominals[index + 1] <= amount) {
             getCombinationsLoop(counts, amount, index + 1);
+        }
     }
 
 
     @Override
     public boolean equals(Object o) {
 
-        if (this == o)
+        if (this == o) {
             return true;
+        }
 
         if (o instanceof CashMachine) {
             CashMachine cm = (CashMachine) o;
 
-            if (combinations.size() != cm.combinations.size())
+            if (combinations.size() != cm.combinations.size()) {
                 return false;
-            else {
+            } else {
                 for (int i = 0; i < combinations.size(); i++) {
                     Collections.sort(combinations.get(i));
                     Collections.sort(cm.combinations.get(i));
                 }
 
                 int k = 0;
-                for (int i = 0; i < cm.combinations.size(); i++)
-                    if (!combinations.contains(cm.combinations.get(i))) k++;
+                for (int i = 0; i < cm.combinations.size(); i++) {
+                    if (!combinations.contains(cm.combinations.get(i))) {
+                        k++;
+                    }
+                }
+
                 return k == 0;
             }
         }
@@ -139,7 +145,6 @@ public class CashMachine {
             System.out.println(Arrays.toString(x.toArray()));
         }
         System.out.println('\n' + "Количество комбинаций:" + machine.combinations.size());
-
 
     }
 
