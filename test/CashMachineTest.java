@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 public class CashMachineTest {
 
     @Test
-    public void testPositive_1() {
+    public void testSumFiveNominals12() {
         Long[] noms = {2L, 1L};
         Long sum = 5L;
         int n = 2;
@@ -19,7 +19,7 @@ public class CashMachineTest {
     }
 
     @Test
-    public void testPositive_2() {
+    public void testBigSum() {
         Long[] noms = {3000000000L};
         Long sum = 3000000000L;
         int n = 1;
@@ -30,17 +30,13 @@ public class CashMachineTest {
     }
 
     @Test
-    public void testPositive_3() {
-        Long[] noms = {1L, 1L, 1L};
-        Long sum = 4L;
-        int n = 3;
-        CashMachine expected = new CashMachine(sum, n, noms, "expected_3");
-        CashMachine machine = new CashMachine(sum, n, noms);
-        Assertions.assertThrows(RuntimeException.class, machine::getCombinations);
+    public void testDuplicatedNominals() {
+        InputStream is = new ByteArrayInputStream("4 3 1 1 1".getBytes());
+        Assertions.assertThrows(RuntimeException.class, () -> new CashMachine(is));
     }
 
     @Test
-    public void testPositive_4() {
+    public void testSumFourNominals12() {
         Long[] noms = {1L, 2L};
         Long sum = 4L;
         int n = 2;
@@ -52,27 +48,22 @@ public class CashMachineTest {
 
 
     @Test
-    public void testExceptionWrongInput_1() {
-        Long[] noms = {5L};
-        CashMachine machine = new CashMachine(6L, 1, noms);
+    public void testExceptionSumLowerThanNominals() {
+        Long[] noms = {6L};
+        CashMachine machine = new CashMachine(5L, 1, noms);
         Assertions.assertThrows(RuntimeException.class, machine::getCombinations);
     }
 
-    // input is a negative value
     @Test
-    public void testExceptionWrongInput_2() {
-        Long[] noms = {5L};
-        CashMachine machine = new CashMachine(-2L, 1, noms);
-        Assertions.assertThrows(RuntimeException.class, machine::getCombinations);
+    public void testExceptionNegativeInput() {
+        InputStream is = new ByteArrayInputStream("-2 1 5".getBytes());
+        Assertions.assertThrows(RuntimeException.class, () -> new CashMachine(is));
     }
 
-    // input is a string
     @Test
-    public void testExceptionWrongInput_3() {
+    public void testExceptionInputIsString() {
         InputStream is = new ByteArrayInputStream("sss 2 1 2".getBytes());
         Assertions.assertThrows(InputMismatchException.class, () -> new CashMachine(is));
-
     }
-
 
 }
