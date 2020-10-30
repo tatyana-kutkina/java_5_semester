@@ -66,4 +66,5 @@ public class CashMachineTest {
         Assertions.assertThrows(InputMismatchException.class, () -> new CashMachine(is));
     }
 
+
 }
