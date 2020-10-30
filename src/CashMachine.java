@@ -18,20 +18,37 @@ public class CashMachine {
     }
 
 
-    public CashMachine(InputStream inputStream) throws InputMismatchException {
+    public CashMachine(InputStream inputStream) {
 
-        Scanner sc = new Scanner(inputStream);
-        //System.out.println("Введите сумму для размена");
-        sum = sc.nextLong();
-        //System.out.println("Введите количество купюр");
-        n = sc.nextInt();
-        nominals = new Long[n];
-        //System.out.println("Введите номиналы купюр через пробел");
-        for (int i = 0; i < n; i++) {
-            nominals[i] = sc.nextLong();
+        try {
+            Scanner sc = new Scanner(inputStream);
+            //System.out.println("Введите сумму для размена");
+            sum = sc.nextLong();
+            //System.out.println("Введите количество купюр");
+            n = sc.nextInt();
+            nominals = new Long[n];
+            //System.out.println("Введите номиналы купюр через пробел");
+            for (int i = 0; i < n; i++) {
+                nominals[i] = sc.nextLong();
+            }
+            Arrays.sort(nominals);
+        } catch (InputMismatchException e) {
+            System.out.println("Incorrect format of data input.\n " + e.getMessage());
+            throw e;
         }
-        Arrays.sort(nominals);
 
+
+        if (sum < 0) {
+            throw new RuntimeException("Input value is negative");
+        }
+
+        ArrayList<Long> nominalsList = new ArrayList<>();
+        Collections.addAll(nominalsList, nominals);
+        Set<Long> set = new HashSet<>(nominalsList);
+
+        if (set.size() != n) {
+            throw new RuntimeException("Incorrect banknote values entered: there are duplicate nominals");
+        }
     }
 
 
@@ -52,28 +69,16 @@ public class CashMachine {
                 combinations.add(list);
             }
         } catch (IOException e) {
-            System.out.println("Ошибка чтения файла.\n" + e.getMessage());
+            System.out.println("File read error.\n" + e.getMessage());
         }
     }
 
     public void getCombinations() throws RuntimeException {
 
-        if (sum < 0) {
-            throw new RuntimeException("Введена некорректное значение суммы");
-        }
-
-        ArrayList<Long> nominalsList = new ArrayList<>();
-        Collections.addAll(nominalsList, nominals);
-        Set<Long> set = new HashSet<>(nominalsList);
-
-        if (set.size() != n) {
-            throw new RuntimeException("Введены некорректные значения купюр: есть повторяющиеся номиналы");
-        }
-
         combinations = new ArrayList<>();
         getCombinations(new int[n], sum, 0);
         if (combinations.size() == 0) {
-            throw new RuntimeException("Невозможно разменять данную сумму представленными купюрами");
+            throw new RuntimeException("It is impossible to exchange this amount with the presented bills");
         }
     }
 
@@ -81,7 +86,7 @@ public class CashMachine {
         if (amount == 0) {
             ArrayList<Long> list = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < counts[i]; j++){
+                for (int j = 0; j < counts[i]; j++) {
                     list.add(nominals[i]);
                 }
             }
@@ -140,11 +145,11 @@ public class CashMachine {
 
         machine.getCombinations();
 
-        System.out.println("Варианты комбинаций:");
+        System.out.println("Combination options:");
         for (ArrayList<Long> x : machine.combinations) {
             System.out.println(Arrays.toString(x.toArray()));
         }
-        System.out.println('\n' + "Количество комбинаций:" + machine.combinations.size());
+        System.out.println('\n' + "Number of combinations" + machine.combinations.size());
 
     }
 
