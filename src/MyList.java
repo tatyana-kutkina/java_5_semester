@@ -18,7 +18,6 @@ public class MyList implements List {
     }
 
 
-
     @Override
     public boolean isEmpty() {
         return currentSize == 0;

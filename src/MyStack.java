@@ -17,7 +17,8 @@ public class MyStack extends Stack {
         if (this.empty()) {
             return null;
         } else {
-            return data.get(0);
+            int n = data.size();
+            return data.get(n-1);
         }
     }
 
@@ -26,14 +27,16 @@ public class MyStack extends Stack {
         if (this.empty()) {
             return null;
         } else {
-            return data.remove(0);
+            int n = data.size();
+            return data.remove(n-1);
         }
     }
 
     @Override
     public Object push(Object element) {
-        data.add(0, element);
-        return data.get(0);
+        int n = data.size();
+        data.add(n, element);
+        return data.get(n);
     }
 
     @Override
