@@ -27,33 +27,34 @@ public class MyList implements List {
     @Override
     public boolean add(Object o) {
         if (currentSize >= maxSize) {
-            return false;
+            this.resize();
         }
         listArray[currentSize++] = o;
         return true;
+
     }
 
 
     @Override
     public void add(int i, Object o) {
-        if (i >= maxSize) {
-            throw new IndexOutOfBoundsException("Index is greater than maximum allowable size");
-        }
-        if (currentSize >= maxSize) {
-            throw new IndexOutOfBoundsException("There is no space to add new element");
-        }
         if (i < 0) {
             throw new IndexOutOfBoundsException("Index cannot be negative");
         }
+        if (i >= maxSize) {
+            throw new IndexOutOfBoundsException("Index is greater than maximum allowable size");
+        }
+        /*
         if (currentSize == i) {
             listArray[currentSize++] = o;
-        } else {
-            for (int j = currentSize; j > i; j--) {
-                listArray[j] = listArray[j - 1];
-            }
-            listArray[i] = o;
-            currentSize++;
+        }*/
+        if (currentSize >= maxSize) {
+            this.resize();
         }
+        System.arraycopy(listArray, i, listArray, i + 1, currentSize - i);
+
+        listArray[i] = o;
+        currentSize++;
+
 
     }
 
@@ -96,6 +97,12 @@ public class MyList implements List {
         return currentSize;
     }
 
+    public void resize() {
+        Object[] b = new Object[2 * maxSize];
+        if (maxSize >= 0) System.arraycopy(listArray, 0, b, 0, maxSize);
+        listArray = b;
+        maxSize *= 2;
+    }
 
     @Override
     public Iterator iterator() {

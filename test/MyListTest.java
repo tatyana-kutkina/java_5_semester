@@ -24,8 +24,8 @@ public class MyListTest {
         list.add(1);
         list.add(2);
         list.add(3);
-        list.add(1, "sss");
-        Assertions.assertEquals(list.get(1), "sss");
+        list.add(3, "sss");
+        Assertions.assertEquals(list.get(3), "sss");
     }
 
     @Test
@@ -47,7 +47,8 @@ public class MyListTest {
         MyList list = new MyList(2);
         list.add(0, 1);
         list.add(1, 2);
-        Assertions.assertThrows(RuntimeException.class, () -> list.add(1, 10));
+        list.add(10);
+        Assertions.assertEquals(10, list.get(2));
     }
 
     @Test
