@@ -140,6 +140,7 @@ public class CashMachine {
 
     public static void main(String[] args) {
 
+
         InputStream inputStream = System.in;
         CashMachine machine = new CashMachine(inputStream);
 
@@ -150,6 +151,7 @@ public class CashMachine {
             System.out.println(Arrays.toString(x.toArray()));
         }
         System.out.println('\n' + "Number of combinations" + machine.combinations.size());
+
 
     }
 
