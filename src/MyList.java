@@ -5,21 +5,26 @@ public class MyList implements List {
     Object[] listArray;
     int maxSize;
     int currentSize;
+    private static final int defaultSize = 20;
 
     public MyList(int maxSize) {
         this.maxSize = maxSize;
-        listArray = new Object [maxSize];
+        listArray = new Object[maxSize];
         currentSize = 0;
     }
 
+    public MyList() {
+        this(defaultSize);
+    }
 
-    //done
+
+
     @Override
     public boolean isEmpty() {
         return currentSize == 0;
     }
 
-    //done
+
     @Override
     public boolean add(Object o) {
         if (currentSize >= maxSize) {
@@ -29,8 +34,7 @@ public class MyList implements List {
         return true;
     }
 
-    //done
-    //check an exception when index < 0
+
     @Override
     public void add(int i, Object o) {
         if (i >= maxSize) {
@@ -39,7 +43,7 @@ public class MyList implements List {
         if (currentSize >= maxSize) {
             throw new IndexOutOfBoundsException("There is no space to add new element");
         }
-        if(i<0){
+        if (i < 0) {
             throw new IndexOutOfBoundsException("Index cannot be negative");
         }
         if (currentSize == i) {
@@ -55,7 +59,6 @@ public class MyList implements List {
     }
 
 
-    //done
     @Override
     public boolean contains(Object o) {
         for (int i = 0; i < currentSize; i++) {
@@ -67,7 +70,6 @@ public class MyList implements List {
     }
 
 
-    //done
     @Override
     public Object get(int i) {
         if (i >= currentSize || i < 0) {
@@ -77,7 +79,6 @@ public class MyList implements List {
     }
 
 
-    //done
     @Override
     public Object remove(int i) {
         if (i >= currentSize || i < 0) {
@@ -97,7 +98,6 @@ public class MyList implements List {
     }
 
 
-    // можно не делать
     @Override
     public Iterator iterator() {
         return null;
