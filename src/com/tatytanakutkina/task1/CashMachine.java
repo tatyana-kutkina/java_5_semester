@@ -39,7 +39,6 @@ public class CashMachine {
             throw e;
         }
 
-
         if (sum < 0) {
             throw new RuntimeException("Input value is negative");
         }
