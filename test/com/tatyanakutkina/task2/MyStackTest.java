@@ -1,3 +1,6 @@
+package com.tatyanakutkina.task2;
+
+import com.tatytanakutkina.task2.MyStack;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,6 @@
+package com.tatyanakutkina.task3;
+
+import com.tatytanakutkina.task3.MyHashTable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +64,7 @@ class MyHashTableTest {
     /*
     @Test
     void testRehashFunctionIsCalled() {
-        MyHashTable<Integer, Integer> mock = Mockito.mock(MyHashTable.class);
+        com.tatytanakutkina.task3.MyHashTable<Integer, Integer> mock = Mockito.mock(com.tatytanakutkina.task3.MyHashTable.class);
         mock.add(2, 10);
         mock.add(3,10);
     }

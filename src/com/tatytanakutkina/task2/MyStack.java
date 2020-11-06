@@ -1,3 +1,5 @@
+package com.tatytanakutkina.task2;
+
 import java.util.Stack;
 
 public class MyStack extends Stack {

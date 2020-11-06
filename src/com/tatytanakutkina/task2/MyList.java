@@ -1,3 +1,5 @@
+package com.tatytanakutkina.task2;
+
 import java.util.*;
 
 public class MyList implements List {

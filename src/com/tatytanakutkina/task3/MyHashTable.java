@@ -1,3 +1,5 @@
+package com.tatytanakutkina.task3;
+
 import java.util.ArrayList;
 
 public class MyHashTable<K, V> {
@@ -151,7 +153,7 @@ public class MyHashTable<K, V> {
     }
 
     /*public static void main(String[] args){
-        MyHashTable<Integer, Integer> table = new MyHashTable<>();
+        com.tatytanakutkina.task3.MyHashTable<Integer, Integer> table = new com.tatytanakutkina.task3.MyHashTable<>();
         table.add(1, 10);
         table.add(2, 20);
         table.remove(-10);

@@ -1,3 +1,6 @@
+package com.tatyanakutkina.task3;
+
+import com.tatytanakutkina.task3.MyHashMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

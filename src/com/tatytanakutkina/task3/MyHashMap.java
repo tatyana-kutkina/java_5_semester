@@ -1,3 +1,5 @@
+package com.tatytanakutkina.task3;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;

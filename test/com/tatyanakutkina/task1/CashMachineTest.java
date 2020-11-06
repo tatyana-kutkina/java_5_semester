@@ -1,3 +1,6 @@
+package com.tatyanakutkina.task1;
+
+import com.tatytanakutkina.task1.CashMachine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
