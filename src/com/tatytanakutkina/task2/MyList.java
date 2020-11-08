@@ -42,20 +42,21 @@ public class MyList implements List {
         if (i < 0) {
             throw new IndexOutOfBoundsException("Index cannot be negative");
         }
-        if (i >= maxSize) {
+        if (i > maxSize) {
             throw new IndexOutOfBoundsException("Index is greater than maximum allowable size");
         }
-        /*
-        if (currentSize == i) {
-            listArray[currentSize++] = o;
-        }*/
-        if (currentSize >= maxSize) {
-            this.resize();
-        }
-        System.arraycopy(listArray, i, listArray, i + 1, currentSize - i);
+        if(i <= currentSize){
+            if (currentSize >= maxSize) {
+                this.resize();
+            }
+            System.arraycopy(listArray, i, listArray, i + 1, currentSize - i);
 
-        listArray[i] = o;
-        currentSize++;
+            listArray[i] = o;
+            currentSize++;
+        }
+        else{
+            throw new RuntimeException("Index is out of allowable zone");
+        }
 
 
     }
