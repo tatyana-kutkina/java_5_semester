@@ -101,81 +101,81 @@ public class MyList implements List {
 
     @Override
     public Iterator iterator() {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Object[] toArray(Object[] objects) {
-        return new Object[0];
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean addAll(Collection collection) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean addAll(int i, Collection collection) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public void clear() {
-
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Object set(int i, Object o) {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public ListIterator listIterator() {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public ListIterator listIterator(int i) {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public List subList(int i, int i1) {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean retainAll(Collection collection) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean removeAll(Collection collection) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public boolean containsAll(Collection collection) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 }
