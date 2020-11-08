@@ -38,39 +38,38 @@ public class MyHashMap implements Map {
     }
 
 
-    // можно не делать
     @Override
     public boolean containsValue(Object o) {
-        return false;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Object remove(Object o) {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public void putAll(Map map) {
-
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public void clear() {
-
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Set keySet() {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Collection values() {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 
     @Override
     public Set<Entry> entrySet() {
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted MyList.");
     }
 }
