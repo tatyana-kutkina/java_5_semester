@@ -28,7 +28,7 @@ public class DirectoryReader {
 
     }
 
-    public void getList(String dirPath) throws IOException {
+    public void getList(String dirPath) {
         File dir = new File(dirPath);
         String[] fileNames = dir.list();
 
@@ -61,11 +61,9 @@ public class DirectoryReader {
     }
 
     public String list() {
-        try {
-            FileWriter writer = new FileWriter(toPath);
+        try (FileWriter writer = new FileWriter(toPath)) {
             this.getList(this.sourcePath);
             writer.write(this.namesList);
-            writer.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

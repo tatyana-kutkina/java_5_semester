@@ -36,7 +36,6 @@ public class MyList implements List {
 
     }
 
-
     @Override
     public void add(int i, Object o) {
         if (i < 0) {
