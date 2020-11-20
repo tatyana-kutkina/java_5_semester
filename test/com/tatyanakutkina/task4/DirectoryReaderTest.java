@@ -12,15 +12,8 @@ public class DirectoryReaderTest {
 
     @Test
     void testFilesCorrect() {
-        DirectoryReader reader = new DirectoryReader("writeFile", "./src/com/tatytanakutkina/task4 /directory");
-        String result = "fileTwo\n" +
-                "fileOne\n" +
-                "dirOne\n" +
-                "dirThree\n" +
-                "fileFive\n" +
-                "fileFour\n" +
-                "fileThree\n" +
-                "dirTwo\n";
+        DirectoryReader reader = new DirectoryReader("writeFile", "/home/tatyana/Документы/Кр_басов/Перепись/16_3");
+        String result = "20200524_123504.jpg\n" + "20200524_123447.jpg\n";
         Assertions.assertEquals(result, reader.list());
 
         try (BufferedReader br = new BufferedReader(new FileReader("writeFIle"))) {
