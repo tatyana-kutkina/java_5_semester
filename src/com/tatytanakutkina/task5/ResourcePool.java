@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ResourcePool<T> {
 
     private LinkedBlockingQueue<AbstractMap.SimpleEntry<T, Long>> available;
-    private LinkedBlockingQueue<T> inUse;
+    private LinkedBlockingQueue<T> inUse = new LinkedBlockingQueue<>();
 
     private int size;
     private boolean shutdownCalled;
@@ -38,10 +38,10 @@ public class ResourcePool<T> {
             T t = null;
             try {
                 AbstractMap.SimpleEntry<T, Long> object = available.take();
+
                 time = object.getValue();
                 if (now - time > keepAliveTime) {
                     available.remove(object);
-                    // implement expire(object) method???
                 } else {
                     t = object.getKey();
                     inUse.add(t);
